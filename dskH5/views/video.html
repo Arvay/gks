@@ -1,0 +1,52 @@
+<ul class="videoNav">
+	<li class="fqaNavClick">公益视频</li>
+	<li>活动报道</li>
+</ul>
+<div class="videoBox">
+	<div id="id_test_video" style="width:100%; height:auto;"></div>
+</div>
+<ul class="activityList videTextList">
+</ul>
+<script type="text/javascript">
+	$(function() {
+		var hrefId = localStorage.getItem('hrefId'); // 首先显示的块
+		var player = new TcPlayer('id_test_video', {
+			"m3u8": "images/suspense.mp4", //请替换成实际可用的播放地址
+			"autoplay": true, //iOS下safari浏览器，以及大部分移动端浏览器是不开放视频自动播放这个能力的
+			"width": '100%', //视频的显示宽度，请尽量使用视频分辨率宽度
+			"height": '100%' //视频的显示高度，请尽量使用视频分辨率高度
+		});
+		boxShow(hrefId);
+		mui('.videoNav').on('tap', 'li', function() {
+			var thisIndex = $(this).index();
+			boxShow(thisIndex)
+		})
+		mui('.videTextList').on('tap','li',function(){
+		  var thisId = $(this).attr('id');
+		  var thisIndex = $(this).parent().attr('data-index')
+		  localStorage.setItem('newsUrl',thisId);
+		  localStorage.setItem('newsIndex',thisIndex);
+		}) 
+		$.ajax({
+			type:"post",
+			url:"/restful/activity",
+			data:{
+				type:1
+			},
+			success:function(data){
+				console.log(data)
+				$.each(data.list, function(index, e) {
+					$(".videTextList").append('<li class="hrefactivityBox" id="'+e.id+'"><img src="img/' + e.img + '"/><span>' + e.title + '</span></li>')
+				});
+			}
+		});
+		function boxShow(id){
+			if(id == 0) {
+				player.play(),$(".videoBox").show(),$(".videTextList").hide()
+			} else if(id == 1) {
+				player.pause(),$(".videTextList").show(),$(".videoBox").hide();
+			}
+			$(".videoNav li").eq(id).addClass('fqaNavClick').siblings().removeClass('fqaNavClick');
+		}
+	})
+</script>

@@ -1,0 +1,18 @@
+<div class="newsBar"><span>知识预防</span>><span class="hrefConsul newsTitle" id="1">宫颈癌预防</span>>正文</div>
+<div class="newsText">
+
+</div>
+<script type="text/javascript">
+	$(function() {
+		var url = localStorage.getItem('newsUrl');
+		var index = localStorage.getItem('newsIndex');
+		if(index=="0"){
+			$(".newsTitle").html("宫颈癌概述");
+			$(".hrefConsul").attr('id','0')
+		}else{
+			$(".newsTitle").html("宫颈癌预防");
+			$(".hrefConsul").attr('id','1')
+		}
+		$(".newsText").load("news/"+url+".html");
+	});
+</script>

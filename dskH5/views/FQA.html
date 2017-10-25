@@ -1,0 +1,65 @@
+<ul class="fqaNav">
+	<li class="fqaNavClick">宫颈癌</li>
+	<li>宫颈癌疫苗</li>
+</ul>
+<ul class="newsList newsList1">
+</ul>
+<ul class="newsList newsList2">
+</ul>
+<div class="pageBtn"><img src="images/more_btn.png" /></div>
+<script type="text/javascript">
+	$(function() {
+		var hrefId = localStorage.getItem('hrefId'),pages = 1,pagesLength; // 首先显示的块
+		boxShow(hrefId)
+		mui('.fqaNav').on('tap', 'li', function() {
+			var thisIndex = $(this).index();
+			boxShow(thisIndex),pages=1;
+		})
+		getNewsList(1,1);
+		//宫颈癌数据
+		function boxShow(id) {
+			if(id == 0) {
+				$(".newsList1,.pageBtn").show(), $(".newsList2").hide();
+				$(".pageBtn img").attr('id','btn1');
+				$(".newsList1").html(""),getNewsList(1,1);
+			} else if(id == 1) {
+				$(".newsList2,.pageBtn").show(), $(".newsList1").hide();
+				$(".pageBtn img").attr('id','btn2');
+				$(".newsList2").html(""),getNewsList(2,1);
+			}
+			$(".fqaNav li").eq(id).addClass('fqaNavClick').siblings().removeClass('fqaNavClick');
+		}
+		/**
+		 * 点击加载
+		 */
+		mui('.pageBtn').on('tap','img',function(){
+			var thisId = $(this).attr('id');
+			pages++;
+			if(thisId == 'btn1'){
+			  getNewsList(1,pages);
+			}else{
+			  getNewsList(2,pages);
+			}
+		  if(pages==pagesLength){
+		  	$(".pageBtn").hide()
+		  };
+		}) 
+		function getNewsList(type,pages) {
+			$.ajax({
+				type: "post",
+				url: "/restful/fqa",
+				data: {
+					type: type,
+					pages: pages
+				},
+				success: function(data) {
+					console.log(data)
+					pagesLength = data.pages;
+					$.each(data.list, function(index, e) {
+						$(".newsList").append("<li><h3><span>Q：</span>" + e.title + "</h3><h2><span>A：</span>" + e.text + "</h2></li>")
+					});
+				}
+			});
+		}
+	})
+</script>

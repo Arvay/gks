@@ -1,0 +1,77 @@
+<ul class="activityNav">
+	<li class="fqaNavClick">宫颈癌概述</li>
+	<li>宫颈癌预防</li>
+</ul>
+<ul class="activityList surveyList" data-index='0'></ul>
+<ul class="activityList preventList" data-index = "1"></ul>
+<div class="pageBtn"><img src="images/more_btn.png" /></div>
+<script type="text/javascript">
+	$(function() {
+		var page = 1;
+		var pagLeng,pagIndex;
+		var hrefId = localStorage.getItem('hrefId');
+		boxShow(hrefId);//首先显示的块
+		mui('.activityNav').on('tap', 'li', function() {
+			var thisIndex = $(this).index();
+			boxShow(thisIndex)
+		});
+		getList2(page),getList(page);
+		mui('.pageBtn').on('tap', 'img', function() {
+			page++, getList(page);
+			if(pagLeng == page) {
+				$(".pageBtn").hide();
+				return false;
+			}
+		});
+		/**
+		 * 加载数据
+		 * @param {Object} page
+		 */
+		function getList(page) {
+			$.ajax({
+				type: "post",
+				url: "/restful/survey",
+				data: {
+					type: page
+				},
+				success: function(data) {
+					console.log(data)
+					pagLeng = data.pages;
+					$.each(data.list, function(index, e) {
+						$(".surveyList").append('<li class="hrefNews" id="'+e.id+'"><img src="img/' + e.img + '"/><span>' + e.title + '</span></li>')
+					});
+				}
+			});
+		}
+		mui('.activityList ').on('tap','li',function(){
+		  var thisId = $(this).attr('id');
+		  var thisIndex = $(this).parent().attr('data-index')
+		  localStorage.setItem('newsUrl',thisId);
+		  localStorage.setItem('newsIndex',thisIndex);
+		}) 
+		function getList2(page) {
+			$.ajax({
+				type: "post",
+				url: "/restful/prevent",
+				data: {
+					type: page
+				},
+				success: function(data) {
+					console.log(data)
+					pagLeng = data.pages;
+					$.each(data.list, function(index, e) {
+						$(".preventList").append('<li class="hrefNews" id="'+e.id+'"><img src="img/' + e.img + '"/><span>' + e.title + '</span></li>')
+					});
+				}
+			});
+		}
+		function boxShow(id){
+			if(id == 0) {
+				$(".surveyList").show(), $(".preventList").hide();
+			} else if(id == 1) {
+				$(".preventList").show(), $(".surveyList,.pageBtn").hide();
+			}
+			$(".activityNav li").eq(id).addClass('fqaNavClick').siblings().removeClass('fqaNavClick');
+		}
+	})
+</script>

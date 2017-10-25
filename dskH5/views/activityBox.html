@@ -1,0 +1,10 @@
+<div class="newsBar"><span>活动资讯</span>><span class="hrefVideo" id="1">活动报道</span>>正文</div>
+<div class="newsText">
+
+</div>
+<script type="text/javascript">
+	$(function() {
+		var url = localStorage.getItem('newsUrl');
+		$(".newsText").load("news/"+url+".html");
+	});
+</script>
