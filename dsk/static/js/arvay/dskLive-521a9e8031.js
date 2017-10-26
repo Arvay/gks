@@ -4,7 +4,7 @@ $(function() {
 	}
 
 	function i() {
-		$(".indexLive").show(), $(".dskVideo").addClass("dskVideoBorder"), $(".videoTitle,.liveSwiper,#id_test_video,.liveRight,.indexBox").hide(), $(".liveTab li").eq(1).addClass("liveTabAdd").siblings().removeClass("liveTabAdd");
+		$(".indexLive").show(), $(".dskVideo").addClass("dskVideoBorder"), $(".videoTitle,#id_test_video,.liveRight,.indexBox").hide(), $(".liveTab li").eq(1).addClass("liveTabAdd").siblings().removeClass("liveTabAdd");
 		var e = setInterval(function() {
 			l.update(), ++a > 6 && clearInterval(e)
 		}, 800)
@@ -59,6 +59,14 @@ $(function() {
 		var d = $(this).attr("class");
 		"teb2_1" == d ? (l.update(), $(".liveTab li").eq(0).addClass("liveTabAdd").siblings().removeClass("liveTabAdd"), $(".liveNext").hide(), e()) : "teb2_2" == d && ($(".liveNext").show(), $(".liveTab li").eq(1).addClass("liveTabAdd").siblings().removeClass("liveTabAdd"), i())
 	});
+	/**
+	 * 切换视频
+	 */
+	$(".liveSwiper .swiper-slide").click(function(){
+		var id = $(this).attr('id');
+		console.log(id)
+		$("video").attr('src',id)
+	})
 	/**
 	 * 加载新闻
 	 */

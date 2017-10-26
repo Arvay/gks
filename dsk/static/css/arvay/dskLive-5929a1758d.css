@@ -1,4 +1,4 @@
-.liveNext,
+liveSwiper.liveNext,
 .liveRight {
 	margin-left: 40px;
 	display: none;
@@ -133,7 +133,7 @@
 }
 
 .liveSwiper {
-	display: none;
+	/*display: none;*/
 	height: 210px;
 	width: 928px;
 	margin-top: 40px
