@@ -62,10 +62,9 @@ $(function() {
 	/**
 	 * 切换视频
 	 */
-	$(".liveSwiper .swiper-slide").click(function(){
-		var id = $(this).attr('id');
-		console.log(id)
-		$("video").attr('src',id)
+	$(".swiper-wrapper").on('click','.swiper-slide',function(){
+		$("video").attr('src',$(this).attr('id'))
+		s.play();
 	})
 	/**
 	 * 加载新闻
