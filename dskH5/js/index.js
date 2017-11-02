@@ -6,6 +6,7 @@
  */
 $(function() {
 	$(".content").load('views/home.html');
+	var urlType = getQueryString('type')//获取url参数
 	/**
 	 * 展开菜单
 	 */
@@ -84,7 +85,21 @@ $(function() {
 			hrefCommon(url);
 		}
 	}
-
+	switch (urlType){
+		case 'contactUs':
+			href.content("contactUs");
+			break;
+		default:
+			break;
+	}
+	function getQueryString(name) {
+	    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+	    var r = window.location.search.substr(1).match(reg);
+	    if (r != null) {
+	        return unescape(r[2]);
+	    }
+	    return null;
+	}
 	function hrefCommon(url) {
 		$(".content").html("").load('views/' + url + '.html')
 		$(".menu").slideUp(), mui(".mui-scroll-wrapper").scroll().refresh(), $(".menuBtn").css('background', 'url(images/nav_icon.png)');
