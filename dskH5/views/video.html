@@ -2,6 +2,16 @@
 	<li class="fqaNavClick">公益视频</li>
 	<li>活动资讯</li>
 </ul>
+<ul class="videoList">
+	<dl id="http://ccp.alihealth.cn/static/images/suspense.mp4">
+		<dt><img src="images/film_img.png"/></dt>
+		<dd>悬疑版</dd>
+	</dl>
+	<dl id="http://ccp.alihealth.cn/static/images/education.mp4">
+		<dt><img src="images/film_img_2.png"/></dt>
+		<dd>疾病教育版</dd>
+	</dl>
+</ul>
 <div class="videoBox">
 	<div id="id_test_video" style="width:100%; height:auto;"></div>
 </div>
@@ -9,9 +19,17 @@
 </ul>
 <script type="text/javascript">
 	$(function() {
+		//切换视频
+		mui('.videoList').on('tap','dl',function(){
+			$(".videoBox").show();
+			$(".videoList").hide();
+			var videoUrl = $(this).attr('id');//播放地址
+			$("video").attr('src',videoUrl)
+			console.log(videoUrl)
+		}) 
 		var hrefId = localStorage.getItem('hrefId'); // 首先显示的块
 		var player = new TcPlayer('id_test_video', {
-			"m3u8": "images/suspense.mp4", //请替换成实际可用的播放地址
+			"mp4": "http://ccp.alihealth.cn/static/images/suspense.mp4", //请替换成实际可用的播放地址
 			"autoplay": true, //iOS下safari浏览器，以及大部分移动端浏览器是不开放视频自动播放这个能力的
 			"width": '100%', //视频的显示宽度，请尽量使用视频分辨率宽度
 			"height": '100%' //视频的显示高度，请尽量使用视频分辨率高度
@@ -21,30 +39,31 @@
 			var thisIndex = $(this).index();
 			boxShow(thisIndex)
 		})
-		mui('.videTextList').on('tap','li',function(){
-		  var thisId = $(this).attr('id');
-		  var thisIndex = $(this).parent().attr('data-index')
-		  localStorage.setItem('newsUrl',thisId);
-		  localStorage.setItem('newsIndex',thisIndex);
-		}) 
+		mui('.videTextList').on('tap', 'li', function() {
+			var thisId = $(this).attr('id');
+			var thisIndex = $(this).parent().attr('data-index')
+			localStorage.setItem('newsUrl', thisId);
+			localStorage.setItem('newsIndex', thisIndex);
+		})
 		$.ajax({
-			type:"post",
-			url:"/restful/activity",
-			data:{
-				type:1
+			type: "post",
+			url: "/restful/activity",
+			data: {
+				type: 1
 			},
-			success:function(data){
+			success: function(data) {
 				console.log(data)
 				$.each(data.list, function(index, e) {
-					$(".videTextList").append('<li class="hrefactivityBox" id="'+e.id+'"><img src="img/' + e.img + '"/><span>' + e.title + '</span></li>')
+					$(".videTextList").append('<li class="hrefactivityBox" id="' + e.id + '"><img src="img/' + e.img + '"/><span>' + e.title + '</span></li>')
 				});
 			}
 		});
-		function boxShow(id){
+
+		function boxShow(id) {
 			if(id == 0) {
-				player.play(),$(".videoBox").show(),$(".videTextList").hide()
+				player.play(), $(".videoList").show(), $(".videTextList,.videoBox").hide()
 			} else if(id == 1) {
-				player.pause(),$(".videTextList").show(),$(".videoBox").hide();
+				player.pause(), $(".videTextList").show(), $(".videoBox,.videoList").hide();
 			}
 			$(".videoNav li").eq(id).addClass('fqaNavClick').siblings().removeClass('fqaNavClick');
 		}

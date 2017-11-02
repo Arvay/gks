@@ -487,6 +487,7 @@ footer h3 {
 }
 
 .videoBox {
+	display: none;
 	width: 100%;
 	height: 4.48rem;
 	margin-bottom: 0.8rem;
@@ -529,4 +530,26 @@ footer h3 {
 }
 .imgAuto{
 	width: auto !important;
+}
+.videoList{
+	display: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0 0.22rem;
+	width: 100%;
+	overflow: hidden;
+}
+.videoList dl{
+	float: left;
+	width: 3.36rem;
+	margin-right: 0.34rem;
+}
+.videoList dl:nth-child(even){
+	margin-right: 0;
+}
+.videoList dl img{
+	display: inline-block;
+	width: 100%;
+	height: 1.88rem;
 }

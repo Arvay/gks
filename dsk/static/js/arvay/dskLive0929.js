@@ -22,7 +22,7 @@ $(function() {
 		d = 0
 	};
 	var s = new TcPlayer("id_test_video", {
-		mp4: "../static/images/suspense.mp4",
+		mp4: "http://ccp.alihealth.cn/static/images/suspense.mp4",
 		autoplay: !1,
 		width: "928",
 		height: "522"
