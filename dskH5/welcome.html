@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>宫颈癌预防行动</title>
+		<script src="js/rem.js" type="text/javascript" charset="utf-8"></script>
+		<script src='http://www.jq22.com/jquery/jquery-1.9.1.js'></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<script src="js/mui.min.js"></script>
+	</head>
+	<style type="text/css">
+		body {
+			font-family: "微软雅黑", "Arial Narrow", HELVETICA;
+			text-align: center;
+			margin: 0 auto;
+			padding: 0;
+			font-size: 12px;
+		}
+		
+		div,
+		form,
+		ul,
+		ol,
+		li,
+		span,
+		p,
+		dl,
+		dd,
+		dt {
+			margin: 0;
+			padding: 0;
+			border: 0;
+		}
+		
+		img,
+		a img {
+			border: 0;
+			margin: 0;
+			padding: 0;
+		}
+		
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			margin: 0;
+			padding: 0;
+			font-size: 12px;
+			font-weight: normal;
+		}
+		
+		ul,
+		ol,
+		li {
+			list-style: none
+		}
+		
+		body,
+		html {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			background: #F5F5F5;
+		}
+		
+		.mui-scroll {
+			background: #fff;
+		}
+		
+		a:link {
+			color: #fff;
+			text-decoration: none;
+			outline: none;
+		}
+		
+		a:visited {
+			color: #fff;
+			outline: none;
+			text-decoration: none;
+		}
+		
+		a:hover {
+			color: #fff;
+			text-decoration: underline;
+			outline: none;
+		}
+		
+		.btn {
+			display: inline-block;
+			width: 4.8rem;
+			height: 0.88rem;
+			background: #FF893A;
+			margin: 0.6rem auto 0.32rem;
+			border-radius: 0.1rem;
+			font-size: 0.32rem;
+			color: #FFFFFF;
+			line-height: 0.88rem;
+			text-decoration: none;
+			outline: none;
+		}
+		
+		.tip {
+			margin: 0 auto;
+			font-size: 0.28rem;
+			color: #A6A6A6;
+			line-height: 0.28rem;
+		}
+		
+		footer {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			padding: 0.2rem 0.3rem;
+			background: #F5F5F5;
+			margin-top: 0.66rem;
+			border-top: 0.04rem solid #FF893A;
+		}
+		
+		footer h2 {
+			text-align: center;
+			font-size: 0.2rem;
+			color: #5F666E;
+			line-height: 0.42rem;
+		}
+		
+		footer h3 {
+			margin-top: 0.4rem;
+			font-size: 0.2rem;
+			color: #5F666E;
+			line-height: 0.42rem;
+		}
+		
+		footer h3 span {
+			margin-right: 0.4rem;
+			display: inline-block;
+			position: relative;
+		}
+		
+		footer h3 span:nth-child(1):after {
+			position: absolute;
+			top: 0.08rem;
+			right: -0.2rem;
+			content: '';
+			height: 0.2rem;
+			width: 1px;
+			background: #5F666E;
+		}
+	</style>
+
+	<body>
+		<div class="mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--这里放置真实显示的DOM内容-->
+				<header><img style="height: 1.44rem;" src="images/top.png" /></header>
+				<div style="height: 4.16rem;margin-top: 0.2rem;" class="banenr">
+					<img style="width: 100%;height: 100%;" src="images/banner.png" />
+				</div>
+				<!--<a href="weixin://contacts/profile/kugounet" class="btn">关注公众号</a>-->
+				<img style="width: 4.3rem;" src="images/erweiCode.jpg" alt="" />
+				<div class="tip" style="margin-bottom: 0.1rem;">长按识别二维码，关注微信公众号</div>
+				<div class="tip">获取更多知识和资讯</div>
+				<footer>
+					<h2>宫颈癌预防行动由中华预防医学会和葛兰素史克共同倡导发起，旨在科学普及宫颈癌防控基本知识，增强公众对宫颈癌的防控意识，促进宫颈癌发病率和死亡率的降低，提高女性健康水平</h2>
+					<h3><span>隐私设置</span><span>品牌试用规范</span></h3>
+					<h3>互联网药品信息服务资格证书：冀-非经营性-2015-0008</h3>
+					<h3>Copyright©2014-2017 阿里健康 版权所有 ICP 冀B2-20150173</h3>
+					<h3>冀ICP备15020852号-2</h3>
+				</footer>
+			</div>
+		</div>
+
+	</body>
+
+</html>
+<script type="text/javascript">
+	$(function() {
+		mui('.mui-scroll-wrapper').scroll({
+			scrollY: true, //是否竖向滚动
+			scrollX: false, //是否横向滚动
+			startX: 0, //初始化时滚动至x
+			startY: 0, //初始化时滚动至y
+			indicators: true, //是否显示滚动条
+			deceleration: 0.0006, //阻尼系数,系数越小滑动越灵敏
+			bounce: true //是否启用回弹		
+		})
+	})
+</script>
