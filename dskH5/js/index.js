@@ -87,26 +87,32 @@ $(function() {
 	}
 	switch (urlType){
 		case '1': // 视频
+			$("header,.banner").hide();
 			localStorage.setItem('hrefId',0)
 			href.content("video");
 			break;
 		case '2': // 活动报道
+			$("header,.banner").hide();
 			localStorage.setItem('hrefId',1)
 			href.content("video");
 			break;
 		case '3': // 宫颈癌概述
+			$("header,.banner").hide();
 			localStorage.setItem('hrefId',0)
 			href.consultation("activityConsultation");
 			break;
 		case '4': // 宫颈癌预防
+			$("header,.banner").hide();
 			localStorage.setItem('hrefId',1)
 			href.consultation("activityConsultation");
 			break;
 		case '5': // 常见问题
+			$("header,.banner").hide();
 			localStorage.setItem('hrefId',0)
 			href.FQA("FQA");
 			break;
 		case '6': // 常见问题
+			$("header,.banner").hide();
 			localStorage.setItem('hrefId',1)
 			href.FQA("FQA");
 			break;
