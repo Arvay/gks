@@ -86,8 +86,14 @@ $(function() {
 		}
 	}
 	switch (urlType){
-		case 'contactUs':
-			href.content("contactUs");
+		case '1':
+			href.content("video");
+			break;
+		case '2':
+			href.content("newsBox");
+			break;
+		case '3':
+			href.content("FQA");
 			break;
 		default:
 			break;
